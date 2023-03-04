@@ -14,5 +14,18 @@ use Laravel\Sanctum\NewAccessToken;
 class User extends Model
 {
     use HasFactory, HasApiTokens, Notifiable;
+    protected $fillable = [
+        'firstname',
+        'lastname',
+        'email',
+        'password',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
     protected $table = 'users';
+
 }
