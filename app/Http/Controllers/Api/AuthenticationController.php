@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 use App\Http\Requests\LoginValidationRequest;
-use App\Models\Users;
+use App\Models\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class AuthenticationController extends Controller
             'password' => $request->password,
             'status' => 1
         ];
-        $user = Users::where($condition)->first();
+        $user = User::where($condition)->first();
         if($user) {
             $token = $user->createToken('auth_token')->plainTextToken;
             return response(
